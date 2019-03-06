@@ -7,6 +7,9 @@ const
 
 router.post('/signup', userControllers.signup);
 
+router.post('/login', userControllers.login);
+
+
 router.use((req, res, next) => {
     console.log('activated')
     const bearerHeader = req.headers['authorization'];
@@ -25,7 +28,6 @@ router.use((req, res, next) => {
     }
 })
 
-router.post('/login', userControllers.login);
 
 router.get('/', userControllers.findUser);
 
