@@ -11,8 +11,7 @@ data.forEach((tipData, i)=>{
     user.save();
     
     db.User.find({email: tipData.user.email}, (err, user)=>{
-        // console.log(user);
-
+        
        let newTip =  {author: user._id,
                    img: tipData.tip.img,
                    city: tipData.tip.city,

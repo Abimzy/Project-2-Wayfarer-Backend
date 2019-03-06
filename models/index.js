@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/jwt-auth', {
   useNewUrlParser: true
-})
+});
 
-module.exports.User = require('./User');
+module.exports = {User: require('./User'), 
+                  Tip: require('./Tip')
+                
+}

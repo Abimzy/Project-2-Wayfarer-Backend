@@ -1,3 +1,4 @@
-module.exports = {
-    user: require('./userController'),
-  }
+// module.exports = {
+//     user: require('./user'),
+//     tip: require('./tip')
+//   }

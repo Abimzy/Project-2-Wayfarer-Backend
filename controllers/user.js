@@ -119,10 +119,28 @@ module.exports = {
                 })
             })
     },
+    postTip: (req, res) => {
+        db.User.deleteOne({
+            _id: req.params.userId
+        }, (err, result) => {
+            if (err) {
+                return res.status(500).json({
+                    err
+                })
+            }
+            res.status(200).json({
+                result
+            })
+        })
+    },
+    findAllTips: (req, res) =>{
+       
+    },
     findUser: (req, res) => {
         console.log('trigger Show', req.userId)
+        let tip = {gk}
         if (req.userId) {
-            db.User.findById(req.userId, (err, foundUser) => {
+            db.Tip.create(req.userId, (err, foundUser) => {
                 res.json(foundUser);
             })
         } else {
