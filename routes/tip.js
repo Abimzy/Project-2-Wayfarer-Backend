@@ -5,6 +5,7 @@ const
     jwt = require('jsonwebtoken');
 
     router.get('/', tipControllers.findAllTips);
+    router.get('/:city', tipControllers.findTipsByCity);
 
     router.use((req, res, next) => {
         console.log('activated')
@@ -30,5 +31,6 @@ router.post('/', tipControllers.postTip);
 router.put('/', tipControllers.updateTip);
 
 router.delete('/', tipControllers.deleteTip);
+
 
 module.exports = router;

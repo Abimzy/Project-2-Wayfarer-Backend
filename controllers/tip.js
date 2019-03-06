@@ -60,5 +60,16 @@ module.exports = {
 
         }
       });
+    },
+    findTipsByCity: (req, res) => {
+
+      db.Tip.find({city: req.params.city}, (err, tips)=>{
+        if (err) {
+         res.json({err: err, message: 'Error! Did not find tips!!!'})
+        } else {
+         res.json(tips);         
+        }
+      });
+
     }
 }
