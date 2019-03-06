@@ -1,4 +1,4 @@
-// module.exports = {
-//     user: require('./user'),
-//     tip: require('./tip')
-//   }
+module.exports = {
+    user: require('./user'),
+    tip: require('./tip')
+  }

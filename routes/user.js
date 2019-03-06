@@ -5,12 +5,7 @@ const
     jwt = require('jsonwebtoken'),
     userControllers = require('../controllers/user');
 
-let name = 'chike';
-console.log(userControllers.signup, '*********');
-
 router.post('/signup', userControllers.signup);
-
-router.post('/login', userControllers.login);
 
 router.use((req, res, next) => {
     console.log('activated')
@@ -29,10 +24,11 @@ router.use((req, res, next) => {
         res.sendStatus(403);
     }
 })
+
+router.post('/login', userControllers.login);
+
 router.get('/', userControllers.findUser);
 
 router.delete('/', userControllers.deleteUser);
-
-// router.post('/', controllers.postTip);
 
 module.exports = router;
