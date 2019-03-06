@@ -1,4 +1,5 @@
 db = require('../models');
+jwt = require('jsonwebtoken');
 
 module.exports = {
     findAllTips: (req, res) =>{
@@ -19,7 +20,11 @@ module.exports = {
             title: req.body.title,
             author: user._id
           });
-           newTip.save();
+
+           newTip.save(() =>{
+            res.json(newTip);
+           });
+
         }
       });
     }

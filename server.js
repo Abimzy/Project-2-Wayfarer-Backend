@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser')
 const userRoutes = require('./routes/user')
 const tipRoutes = require('./routes/tip')
-const jwt = require('jsonwebtoken')
+
 
 
 // Middleware

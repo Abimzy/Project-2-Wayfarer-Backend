@@ -2,6 +2,7 @@ const
     express = require('express');
     router = express.Router(),
     tipControllers = require('../controllers/tip');
+    jwt = require('jsonwebtoken');
 
 
     router.use((req, res, next) => {

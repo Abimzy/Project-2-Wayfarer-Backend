@@ -28,12 +28,11 @@ module.exports = {
                                 password: hash
                             });
 
-                            user.save();
-
-                            let aUser = {email: req.body.email}
+                            user.save(() =>{
+                                let aUser = {email: req.body.email}
 
                                 jwt.sign(
-                                    user,
+                                    aUser,
                                     "cantaloupe", {
                                         expiresIn: "1h"
                                     },
@@ -46,6 +45,10 @@ module.exports = {
                                         })
                                     });
 
+
+                            });
+
+                            
                             // db.User.create({
                             //     email: req.body.email,
                             //     password: hash
