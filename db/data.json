@@ -1,0 +1,19 @@
+[
+
+    {
+        "user": {"email": "chike@gmail.com", "password": "something1"},
+            "tip": {"author": "chike", "image": "", 
+            "title": "chike title", "city": "Boston"
+        }
+    },
+    
+    {
+        "user": {
+            "email": "eunice@gmail.com", 
+            "password": "something2"},
+    "tip": {"author": "eunice", "image": "", "title": "eunice title", "city": "SF"}},
+    
+    {"user": {"email": "tristan@gmail.com", "password": "something3"},
+    "tip": {"author": "tristan", "image": "", "title": "tristan title", "city": "Miami"}}
+    
+    ]
