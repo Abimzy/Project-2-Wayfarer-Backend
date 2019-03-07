@@ -32,22 +32,32 @@ module.exports = {
       });
     },
     updateTip: (req, res)=> {
-      db.Tip.findOneAndUpdate({_id:req.body.tipId}, (err, tip)=>{
+
+      let data = JSON.parse(req.params.data);
+
+
+      db.Tip.findById(data.tipId, (err, tip)=>{
         if (err) {
+          console.log('erroorrrrrr')
          res.json({err: err, message: 'no dice!!!'})
         } else {
-       
-            tip.img = req.body.img,
-            tip.city = req.body.city
-            tip.text = req.body.text
-            tip.title = req.body.title
+          
 
-           tip.save((err, updatedTip) =>{
-            res.json(updatedTip);
-           });
+            // tip.img = req.body.img
+            // tip.city = req.body.city
+            // tip.title = req.body.title
+            tip.text = data.text;
 
+            tip.save((err)=>{
+              if(err) {
+                return console.log(err);
+              }
+              res.json(tip);
+            });
+            
+            
         }
-      });
+      })
     },
     deleteTip: (req, res) => {
       db.Tip.findOneAndDelete({_id: req.params.tipId}, (err, tip)=>{

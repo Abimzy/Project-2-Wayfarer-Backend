@@ -8,7 +8,7 @@ const
     router.get('/:city', tipControllers.findTipsByCity);
     router.post('/', tipControllers.postTip);
     router.delete('/:tipId', tipControllers.deleteTip);
-    router.put('/:tipId', tipControllers.updateTip);
+    router.put('/:data', tipControllers.updateTip);
 
 
 
