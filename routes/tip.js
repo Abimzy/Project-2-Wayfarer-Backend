@@ -6,6 +6,11 @@ const
 
     router.get('/', tipControllers.findAllTips);
     router.get('/:city', tipControllers.findTipsByCity);
+    router.post('/', tipControllers.postTip);
+    router.delete('/:tipId', tipControllers.deleteTip);
+    router.put('/:tipId', tipControllers.updateTip);
+
+
 
     router.use((req, res, next) => {
         console.log('activated')
@@ -26,11 +31,9 @@ const
     })
     
 
-router.post('/', tipControllers.postTip);
 
-router.put('/', tipControllers.updateTip);
 
-router.delete('/', tipControllers.deleteTip);
+
 
 
 module.exports = router;

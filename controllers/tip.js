@@ -11,7 +11,7 @@ module.exports = {
 
     },
     postTip: (req, res) =>{
-      db.User.findOne({email: req.body.email}, (err, user)=>{
+      db.User.findOne({}, (err, user)=>{
         if (err) {
          res.json({err: err, message: 'no dice!!!'})
         } else {
@@ -32,7 +32,7 @@ module.exports = {
       });
     },
     updateTip: (req, res)=> {
-      db.Tip.findById(req.body.tipId, (err, tip)=>{
+      db.Tip.findOneAndUpdate({_id:req.body.tipId}, (err, tip)=>{
         if (err) {
          res.json({err: err, message: 'no dice!!!'})
         } else {
@@ -50,14 +50,17 @@ module.exports = {
       });
     },
     deleteTip: (req, res) => {
-      db.Tip.findByIdAndDelete(req.body.tipId, (err, tip)=>{
+      db.Tip.findOneAndDelete({_id: req.params.tipId}, (err, tip)=>{
         if (err) {
          res.json({err: err, message: 'Tip not deleted!!'});
         } else {
-           tip.save((err, deletedTip) =>{
-            res.json(deletedTip);
-           });
-
+          if (!tip) {
+            res.json({message: 'cant find the tip!!!'}) 
+          } else {
+            tip.save((err, deletedTip) =>{
+              res.json({message: 'deleted', tip: deletedTip});
+             });
+          }
         }
       });
     },
@@ -73,3 +76,4 @@ module.exports = {
 
     }
 }
+
