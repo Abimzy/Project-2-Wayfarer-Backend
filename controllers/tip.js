@@ -7,11 +7,8 @@ module.exports = {
          res.json({tips});
        })
     },
-    findCity: (req, res) =>{
-
-    },
     postTip: (req, res) =>{
-      db.User.findOne({email: req.body.email}, (err, user)=>{
+      db.User.findOne({}, (err, user)=>{
         if (err) {
          res.json({err: err, message: 'no dice!!!'})
         } else {
@@ -32,32 +29,45 @@ module.exports = {
       });
     },
     updateTip: (req, res)=> {
-      db.Tip.findById(req.body.tipId, (err, tip)=>{
+
+      let data = JSON.parse(req.params.data);
+
+
+      db.Tip.findById(data.tipId, (err, tip)=>{
         if (err) {
+          console.log('erroorrrrrr')
          res.json({err: err, message: 'no dice!!!'})
         } else {
-       
-            tip.img = req.body.img,
-            tip.city = req.body.city
-            tip.text = req.body.text
-            tip.title = req.body.title
+          
 
-           tip.save((err, updatedTip) =>{
-            res.json(updatedTip);
-           });
+            // tip.img = req.body.img
+            // tip.city = req.body.city
+            // tip.title = req.body.title
+            tip.text = data.text;
 
+            tip.save((err)=>{
+              if(err) {
+                return console.log(err);
+              }
+              res.json(tip);
+            });
+            
+            
         }
-      });
+      })
     },
     deleteTip: (req, res) => {
-      db.Tip.findByIdAndDelete(req.body.tipId, (err, tip)=>{
+      db.Tip.findOneAndDelete({_id: req.params.tipId}, (err, tip)=>{
         if (err) {
          res.json({err: err, message: 'Tip not deleted!!'});
         } else {
-           tip.save((err, deletedTip) =>{
-            res.json(deletedTip);
-           });
-
+          if (!tip) {
+            res.json({message: 'cant find the tip!!!'}) 
+          } else {
+            tip.save((err, deletedTip) =>{
+              res.json({message: 'deleted', tip: deletedTip});
+             });
+          }
         }
       });
     },
@@ -73,3 +83,4 @@ module.exports = {
 
     }
 }
+

@@ -3,8 +3,7 @@ const app = express();
 const bodyParser = require('body-parser')
 const userRoutes = require('./routes/user')
 const tipRoutes = require('./routes/tip')
-
-
+const cors=  require ('cors')
 
 // Middleware
 app.use(bodyParser.urlencoded({
@@ -12,6 +11,9 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.use(express.static('public'))
+
+app.use(cors());
+
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
@@ -23,3 +25,4 @@ app.use('/api/tip', tipRoutes);
 
 
 app.listen(process.env.PORT, () => console.log("Listening on PORT"))
+ 
