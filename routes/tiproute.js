@@ -1,14 +1,14 @@
+
 const
     express = require('express'),
     app = express(),
     router = express.Router(),
     jwt = require('jsonwebtoken'),
-    userControllers = require('../controllers/user');
+    controllers = require('../controllers')
 
-router.post('/signup', userControllers.signup);
+router.post('/signup', controllers.user.signup);
 
-router.post('/login', userControllers.login);
-
+router.post('/login', controllers.user.login);
 
 router.use((req, res, next) => {
     console.log('activated')
@@ -21,16 +21,15 @@ router.use((req, res, next) => {
         req.token = bearerToken;
         let verified = jwt.verify(req.token, 'cantaloupe');
         console.log('here is the verified', verified)
-        req.userId = verified._id
+        req.userId = verified._id 
         next(); 
     } else {
         res.sendStatus(403);
     }
 })
+router.get('/', controllers.user.findUser);
 
+router.delete('/', controllers.user.deleteUser);
 
-router.get('/', userControllers.findUser);
+module.exports = router;
 
-router.delete('/', userControllers.deleteUser);
-
-module.exports = router; 
