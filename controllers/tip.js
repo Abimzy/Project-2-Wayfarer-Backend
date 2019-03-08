@@ -7,9 +7,6 @@ module.exports = {
          res.json({tips});
        })
     },
-    findCity: (req, res) =>{
-
-    },
     postTip: (req, res) =>{
       db.User.findOne({email: req.body.email}, (err, user)=>{
         if (err) {
@@ -23,7 +20,6 @@ module.exports = {
             title: req.body.title,
             author: user._id
           });
-
            newTip.save(() =>{
             res.json(newTip);
            });
@@ -34,7 +30,7 @@ module.exports = {
     updateTip: (req, res)=> {
       db.Tip.findById(req.body.tipId, (err, tip)=>{
         if (err) {
-         res.json({err: err, message: 'no dice!!!'})
+         res.json({err: err, message: 'Error! Did not update Tip!'})
         } else {
        
             tip.img = req.body.img,
@@ -57,12 +53,10 @@ module.exports = {
            tip.save((err, deletedTip) =>{
             res.json(deletedTip);
            });
-
         }
       });
     },
     findTipsByCity: (req, res) => {
-
       db.Tip.find({city: req.params.city}, (err, tips)=>{
         if (err) {
          res.json({err: err, message: 'Error! Did not find tips!!!'})
