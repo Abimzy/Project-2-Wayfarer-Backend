@@ -7,9 +7,6 @@ module.exports = {
          res.json({tips});
        })
     },
-    findCity: (req, res) =>{
-
-    },
     postTip: (req, res) =>{
       db.User.findOne({}, (err, user)=>{
         if (err) {
