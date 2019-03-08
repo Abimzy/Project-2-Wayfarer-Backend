@@ -24,4 +24,4 @@ app.use('/user', userRoutes);
 app.use('/api/tip', tipRoutes);
 
 
-app.listen(3002, () => console.log("Listening on 3002"))
+app.listen(3001, () => console.log("Listening on 3002"))

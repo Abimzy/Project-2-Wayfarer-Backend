@@ -12,7 +12,8 @@ data.forEach((tipData, i)=>{
     
     db.User.find({email: tipData.user.email}, (err, user)=>{
         
-       let newTip =  {author: user._id,
+       let newTip =  {
+                    author: tipData.tip.author,
                    img: tipData.tip.img,
                    city: tipData.tip.city,
                    text: tipData.tip.text,
