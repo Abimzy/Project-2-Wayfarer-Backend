@@ -33,4 +33,4 @@ router.get('/', userControllers.findUser);
 
 router.delete('/', userControllers.deleteUser);
 
-module.exports = router;
+module.exports = router; 
