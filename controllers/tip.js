@@ -18,7 +18,7 @@ module.exports = {
             city: req.body.city,
             text: req.body.text,
             title: req.body.title,
-            author: user._id
+            author: req.body.author
           });
 
            newTip.save(() =>{
