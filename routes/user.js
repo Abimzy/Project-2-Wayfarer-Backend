@@ -7,7 +7,14 @@ const
 
 router.post('/signup', userControllers.signup);
 
+
 router.post('/login', userControllers.login);
+
+router.get('/', userControllers.findUser);
+
+
+
+
 
 
 router.use((req, res, next) => {
@@ -27,9 +34,6 @@ router.use((req, res, next) => {
         res.sendStatus(403);
     }
 })
-
-
-router.get('/', userControllers.findUser);
 
 router.delete('/', userControllers.deleteUser);
 
