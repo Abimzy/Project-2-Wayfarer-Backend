@@ -22,12 +22,10 @@ module.exports = {
                                 error: err
                             })
                         } else {
-
                             let user = new db.User({
                                 email: req.body.email,
                                 password: hash
                             });
-
                             user.save(() =>{
                                 let aUser = {email: req.body.email}
 
@@ -37,42 +35,13 @@ module.exports = {
                                         expiresIn: "1h"
                                     },
                                     (err, signedJwt) => {
-                                        console.log(signedJwt, '*************');
                                         res.status(200).json({
                                             message: 'User Created',
                                             aUser,
                                             signedJwt
                                         })
                                     });
-                            });
-
-                            
-                            // db.User.create({
-                            //     email: req.body.email,
-                            //     password: hash
-                            // }, (err, newUser) => {
-                            //     console.log('here is the result', newUser)
-
-
-                            //     // if(err){ return res.status(500).json({err})}
-                            //     let user = {
-                            //         email: newUser.email,
-                            //         _id: newUser._id
-                            //     }
-
-                            //     jwt.sign(
-                            //         user,
-                            //         "cantaloupe", {
-                            //             expiresIn: "1h"
-                            //         },
-                            //         (err, signedJwt) => {
-                            //             res.status(200).json({
-                            //                 message: 'User Created',
-                            //                 user,
-                            //                 signedJwt
-                            //             })
-                            //         });
-                            // })
+                            });   
                         }
                     })
                 }
@@ -134,8 +103,6 @@ module.exports = {
                         })
                     }
                 })
-
-
             })
             .catch(err => {
                 console.log("OUTSIDE ERROR_")
@@ -144,23 +111,6 @@ module.exports = {
                     err
                 })
             })
-    },
-    postTip: (req, res) => {
-        db.User.deleteOne({
-            _id: req.params.userId
-        }, (err, result) => {
-            if (err) {
-                return res.status(500).json({
-                    err
-                })
-            }
-            res.status(200).json({
-                result
-            })
-        })
-    },
-    findAllTips: (req, res) =>{
-       
     },
     findUser: (req, res) => {
         console.log('trigger Show', req.userId)

@@ -12,7 +12,6 @@ module.exports = {
         if (err) {
          res.json({err: err, message: 'no dice!!!'})
         } else {
-
           let newTip = new db.Tip({
             img: req.body.img,
             city: req.body.city,
@@ -20,29 +19,19 @@ module.exports = {
             title: req.body.title,
             author: req.body.author
           });
-
            newTip.save(() =>{
             res.json(newTip);
            });
-
         }
       });
     },
     updateTip: (req, res)=> {
-
       let data = JSON.parse(req.params.data);
-
 
       db.Tip.findById(data.tipId, (err, tip)=>{
         if (err) {
-          console.log('erroorrrrrr')
-         res.json({err: err, message: 'no dice!!!'})
+         res.json({err: err, message: 'Error: No tip found'})
         } else {
-          
-
-            // tip.img = req.body.img
-            // tip.city = req.body.city
-            // tip.title = req.body.title
             tip.text = data.text;
 
             tip.save((err)=>{
@@ -51,8 +40,6 @@ module.exports = {
               }
               res.json(tip);
             });
-            
-            
         }
       })
     },
@@ -72,7 +59,6 @@ module.exports = {
       });
     },
     findTipsByCity: (req, res) => {
-
       db.Tip.find({city: req.params.city}, (err, tips)=>{
         if (err) {
          res.json({err: err, message: 'Error! Did not find tips!!!'})
@@ -80,7 +66,5 @@ module.exports = {
          res.json(tips);         
         }
       });
-
     }
 }
-

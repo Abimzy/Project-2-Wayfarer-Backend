@@ -30,6 +30,4 @@ router.use((req, res, next) => {
     }
 })
 
-// router.delete('/', userControllers.deleteUser);
-
 module.exports = router; 
