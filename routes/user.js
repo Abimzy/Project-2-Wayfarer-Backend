@@ -9,8 +9,6 @@ router.post('/signup', userControllers.signup);
 
 router.post('/login', userControllers.login);
 
-router.get('/', userControllers.findUser);
-
 
 router.use((req, res, next) => {
     console.log('activated')
@@ -29,5 +27,7 @@ router.use((req, res, next) => {
         res.sendStatus(403);
     }
 })
+
+router.get('/', userControllers.findUser);
 
 module.exports = router; 
