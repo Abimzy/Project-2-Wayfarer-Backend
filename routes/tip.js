@@ -5,11 +5,7 @@ const
     tipControllers = require('../controllers/tip');
     jwt = require('jsonwebtoken');
 
-
     router.get('/', tipControllers.findAllTips);
-    router.post('/', tipControllers.postTip);
-    router.delete('/:tipId', tipControllers.deleteTip);
-    router.put('/:data', tipControllers.updateTip);
    
     router.use((req, res, next) => {
         console.log('activated')
@@ -29,6 +25,8 @@ const
         }
     })
     
-
+    router.post('/', tipControllers.postTip);
+    router.delete('/:tipId', tipControllers.deleteTip);
+    router.put('/:data', tipControllers.updateTip);
 
 module.exports = router;
