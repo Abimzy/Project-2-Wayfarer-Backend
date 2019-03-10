@@ -1,11 +1,15 @@
 const
     express = require('express');
-    router = express.Router(),
+    app = express();
+    router = express.Router();
     tipControllers = require('../controllers/tip');
     jwt = require('jsonwebtoken');
 
+
     router.get('/', tipControllers.findAllTips);
-    // router.get('/:city', tipControllers.findTipsByCity);
+    router.post('/', tipControllers.postTip);
+    router.delete('/:tipId', tipControllers.deleteTip);
+    router.put('/:data', tipControllers.updateTip);
    
     router.use((req, res, next) => {
         console.log('activated')
@@ -25,8 +29,6 @@ const
         }
     })
     
-    router.post('/', tipControllers.postTip);
-    router.delete('/:tipId', tipControllers.deleteTip);
-    router.put('/:data', tipControllers.updateTip);
+
 
 module.exports = router;
