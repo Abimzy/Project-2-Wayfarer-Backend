@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const tipSchema = new mongoose.Schema({
-  author: { type: Schema.ObjectId, ref: 'User' },
+  author: String,
   text: String,
   title: String,
   city: String

@@ -18,7 +18,7 @@ module.exports = {
             city: req.body.city,
             text: req.body.text,
             title: req.body.title,
-            author: user._id
+            author: req.body.author
           });
 
            newTip.save(() =>{
@@ -40,9 +40,9 @@ module.exports = {
         } else {
           
 
-            // tip.img = req.body.img
-            // tip.city = req.body.city
-            // tip.title = req.body.title
+            tip.img = req.body.img
+            tip.city = req.body.city
+            tip.title = req.body.title
             tip.text = data.text;
 
             tip.save((err)=>{
