@@ -32,14 +32,11 @@ module.exports = {
 
       let data = JSON.parse(req.params.data);
 
-
       db.Tip.findById(data.tipId, (err, tip)=>{
         if (err) {
           console.log('erroorrrrrr')
          res.json({err: err, message: 'no dice!!!'})
         } else {
-          
-
             // tip.img = req.body.img
             // tip.city = req.body.city
             // tip.title = req.body.title
@@ -72,7 +69,6 @@ module.exports = {
       });
     },
     findTipsByCity: (req, res) => {
-
       db.Tip.find({city: req.params.city}, (err, tips)=>{
         if (err) {
          res.json({err: err, message: 'Error! Did not find tips!!!'})
