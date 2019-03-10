@@ -6,9 +6,12 @@ const
 
     router.get('/', tipControllers.findAllTips);
     router.get('/:city', tipControllers.findTipsByCity);
+
     router.post('/', tipControllers.postTip);
     router.delete('/:tipId', tipControllers.deleteTip);
     router.put('/:data', tipControllers.updateTip);
+
+
 
 
 
@@ -29,11 +32,9 @@ const
             res.sendStatus(403);
         }
     })
-    
 
 
-
-
+ 
 
 
 module.exports = router;

@@ -12,11 +12,6 @@ router.post('/login', userControllers.login);
 
 router.get('/', userControllers.findUser);
 
-
-
-
-
-
 router.use((req, res, next) => {
     console.log('activated')
     const bearerHeader = req.headers['authorization'];
