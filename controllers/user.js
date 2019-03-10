@@ -114,7 +114,7 @@ module.exports = {
     },
     findUser: (req, res) => {
         console.log('trigger Show', req.userId)
-        let tip = {gk}
+        let tip;
         if (req.userId) {
             db.Tip.create(req.userId, (err, foundUser) => {
                 res.json(foundUser);

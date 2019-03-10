@@ -32,12 +32,6 @@ module.exports = {
         if (err) {
          res.json({err: err, message: 'Error: No tip found'})
         } else {
-<<<<<<< HEAD
-            // tip.img = req.body.img
-            // tip.city = req.body.city
-            // tip.title = req.body.title
-=======
->>>>>>> b29f65ce523e0897a7b87bed5f109c65a8dc5201
             tip.text = data.text;
 
             tip.save((err)=>{
