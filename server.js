@@ -32,11 +32,9 @@ app.get('/', (req, res) => {
 app.use('/user', userRoutes);
 
 
-
-
 app.use('/api/tip', tipRoutes);
 
 
-app.listen(process.env.PORT, () => console.log("Listening on PORT"))
+app.listen(process.env.PORT, () => console.log("Listening on PORT"));
  
 // app.listen(3001, () => console.log("Listening on 3002"))
