@@ -6,6 +6,7 @@ const
 
     router.get('/', tipControllers.findAllTips);
     router.get('/:city', tipControllers.findTipsByCity);
+ 
 
     
     router.use((req, res, next) => {
@@ -30,6 +31,7 @@ const
     router.delete('/:tipId', tipControllers.deleteTip);
     router.put('/:data', tipControllers.updateTip);
 
+  
  
 
 
