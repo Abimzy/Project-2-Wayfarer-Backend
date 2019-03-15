@@ -31,18 +31,15 @@ https://raw.git.generalassemb.ly/sf-wdi-51/project-02/master/wireframes.png
 
 
 
-**Project Sprints:**
 
-
-## Sprint 1: Basic Auth & Profiles
+## Project Sprints:
 
 ---
 
-## Sprint 2: CRUD
-
----
+**Sprint 1: Basic Auth & Profiles**
 
 
-## Sprint 3: Validations & Authorization
+**Sprint 2: CRUD**
 
----
+
+**Sprint 3: Validations & Authorization**
